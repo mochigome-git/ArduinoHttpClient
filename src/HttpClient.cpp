@@ -63,6 +63,16 @@ void HttpClient::beginRequest()
   iState = eRequestStarted;
 }
 
+void HttpClient::sendApiKeyHeader(const char* apiKey) {
+  if (iState < eRequestSent) {
+    finishHeaders();
+  }
+
+  String header = "apikey: ";
+  header += apiKey;
+  sendHeader(header);
+}
+
 int HttpClient::startRequest(const char* aURLPath, const char* aHttpMethod, 
                                 const char* aContentType, int aContentLength, const byte aBody[])
 {
