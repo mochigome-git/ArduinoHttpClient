@@ -211,6 +211,8 @@ public:
     void sendBasicAuth(const String& aUser, const String& aPassword)
       { sendBasicAuth(aUser.c_str(), aPassword.c_str()); }
 
+    void sendApiKeyHeader(const char* apiKey);
+
     /** Get the HTTP status code contained in the response.
       For example, 200 for successful request, 404 for file not found, etc.
     */
